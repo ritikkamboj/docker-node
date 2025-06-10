@@ -7,3 +7,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update -y
 RUN apt-get install -y nodejs
  
+
+# above code to install node and below  code to files whose copy needed in container
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY index.js index.js
+
+
