@@ -9,14 +9,15 @@ RUN apt-get install -y nodejs
  
 
 # above code to install node and below  code to files whose copy needed in container
+WORKDIR /app
 
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 COPY . .
 
-COPY index.js /app/index.js
+COPY index.js index.js
 
 
-RUN cd app &&  npm install
+RUN npm install
 
-ENTRYPOINT [ "node", "/app/index.js" ]
+ENTRYPOINT [ "node", "index.js" ]
